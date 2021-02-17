@@ -43,7 +43,6 @@ The files will be in the container, run them like you would directly
 ```
 [root@c5cf05efffdc /]# generate_animals.py animals.json
 [root@c5cf05efffdc /]# read_animals.py animals.json
-[root@c5cf05efffdc /]# test_read_animals.py
 ```
 ## How to run the unit test 
 Leave the container and run the test\_read\_animals.py file
