@@ -21,10 +21,9 @@ Then make generate\_animals.py and read\_animals.py executable (and also test\_r
 ```
 Then to run directly without making a container
 ```
-[isp02]$ python3
->>> generate_animals.py animals.json
->>> read_animals.py animals.json
->>> test_read_animals.py
+[isp02]$ python3 generate_animals.py animals.json
+[isp02]$ python3 read_animals.py animals.json
+[isp02]$ python3 test_read_animals.py
 ```
 ## How to Build Image with Dockerfile 
 The docker file already contains all the commands needed to build your image. To do so type in the following code:
