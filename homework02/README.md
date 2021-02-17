@@ -1,8 +1,9 @@
 # Homework 2
 ---
 generate\_animals.py generates a json file full of 20 animal hybrids randomly generated that lists out their features: head, body, number of arms, number of legs, and number of tails. 
-to run the file you will need user input of the file name to generate
+to run the file you will need user input of the file name to generate 
 read\_animals.py prints out 1 randomly selected animal from the json file made using generate\_animals.pyIt then will choose to random parents from the list and will breed to make a child, which combines the heads and bodies of the parents and has the average number of arms and legs from the parents and the number of tails is the sum of the number of arms and legs.
+
 ---
 ## Downloading and Running Directly
 Download the files by getting the files off of github
