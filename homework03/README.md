@@ -52,6 +52,10 @@ To access a certain number of animals use the url localhost:5006/animals/number?
 # This will return the top 50 animals
 [isp02]$ curl localhost:5006/animals/number?top=50
 ```
+To beed 2 random animals use the url localhost:5006/animals/breed
+```
+[isp02]$ curl localhost:5006/animals/breed
+```
 To create a random animal use the url localhost:5006/animals/createRandom
 ```
 [isp02]$ curl localhost:5006/animals/createRandom
