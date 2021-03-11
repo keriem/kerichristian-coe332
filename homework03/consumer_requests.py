@@ -1,10 +1,47 @@
 import requests
+import json
+#This is Zoe Watson's url to get all of her animals.
+#response = requests.get(url="http://localhost:5037/animals")
 
-#This is JOhn Matthew Mason's url to get the first five animals
-response = requests.get(url="http://localhost:5018/animals?num_animals=5")
+response1 = requests.get(url="http://localhost:5006/animals")
 
 #look at the response code
-print(response)
-print(response.status_code)
-print(response.json())
-print(response.headers)
+#print(response1)
+print(response1.status_code)
+print(response1.json())
+print(response1.headers)
+
+response2 = requests.get(url="http://localhost:5006/animals/head?name='snake'")
+
+#look at the response code
+#print(response2)
+print(response2.status_code)
+print(response2.json())
+print(response2.headers)
+
+response3 = requests.get(url="http://localhost:5006/animals/legs?number=6")
+
+#look at the response code
+#print(response3)
+print(response3.status_code)
+print(response3.json())
+print(response3.headers)
+
+response4 = requests.get(url="http://localhost:5006/animals/createRandom")
+
+#look at the response code
+#print(response4)
+print(response4.status_code)
+print(response4.json())
+print(response4.headers)
+
+reponse5 = requests.get(url="http://localhost:5006/animals/number?top=50")
+
+#look at the response code
+print(response5)
+print(response5.status_code)
+print(response5.json())
+print(response5.headers)
+
+
+

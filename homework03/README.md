@@ -57,5 +57,14 @@ To create a random animal use the url localhost:5006/animals/createRandom
 [isp02]$ curl localhost:5006/animals/createRandom
 ```
 ## How to run the Consumer
-The consumer file will be accessing Zoe Watson's urls. 
+The consumer file will run some test urls listed above. After the container is running call the container with the following line:
+```
+[isp02]$ python3 consumer_requests.py
+```
+## Conclusion
+I wasn't sure how to do the consumer for someone elses code. I tried to coordinate with Zoe Watson, but thought it'd be safer to just include urls from my code. Hopefully this is sufficient as you said we would partner up for consumers on Thursday. 
+Make sure to stop the container!
+```
+[isp02]$ docker stop "kchristian-hw3-flask"
+```
 
