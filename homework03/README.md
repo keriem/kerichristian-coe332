@@ -25,7 +25,7 @@ Run the containr created by the image
 ```
 [isp02]$ docker run --name "kchristian-hw3-flask" -d -p 5006:5000 kchristian1/homework03:1.0
 ```
-Now you should be able to curl into the flask using the container that is running. Check it using the 
+Now you should be able to curl into the flask using the container that is running. Check it using the hello world route
 ```
 [isp02]$ curl localhost:5006/helloworld
 ```
@@ -57,7 +57,7 @@ To create a random animal use the url localhost:5006/animals/createRandom
 [isp02]$ curl localhost:5006/animals/createRandom
 ```
 ## How to run the Consumer
-The consumer file will run some test urls listed above. After the container is running call the container with the following line:
+The consumer file will run some test urls listed above. After the container is running call the consumer with the following line:
 ```
 [isp02]$ python3 consumer_requests.py
 ```
