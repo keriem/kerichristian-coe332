@@ -35,13 +35,20 @@ print(response4.status_code)
 print(response4.json())
 print(response4.headers)
 
-reponse5 = requests.get(url="http://localhost:5006/animals/number?top=50")
+response5 = requests.get(url="http://localhost:5006/animals/number?top=50")
 
 #look at the response code
-print(response5)
+#print(response5)
 print(response5.status_code)
 print(response5.json())
 print(response5.headers)
 
+response6 = requests.get(url="http://localhost:5006/animals/breed")
+
+#look at the response code
+#print(response6)
+print(response6.status_code)
+print(response6.json())
+print(response6.headers)
 
 
