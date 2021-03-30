@@ -67,7 +67,7 @@ To get the total number of animals use the url localhost:5006/animals/total
 [isp02]$ curl localhost:5006/animals/total
 ```
 
-Below are other routes left over from Homework03:
+**Below are other routes left over from Homework03:**
 
 To access animals with a specific head use the url localhost:5006/animals/head?name= '\<nameofhead\>'. Here are some examples.
 ```
