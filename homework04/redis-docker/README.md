@@ -92,9 +92,6 @@ To create a random animal use the url localhost:5006/animals/createRandom
 ```
 [isp02]$ curl localhost:5006/animals/createRandom
 ```
-## How to run the Consumer
-The consumer file will run some test urls listed above. After the container is running call the container with the following line:
-```
-[isp02]$ python3 consumer_requests.py
-```
+## Closing the Containers
+Don't forget to close the containers once you are done. I usually just use Ctrl-Z
 
