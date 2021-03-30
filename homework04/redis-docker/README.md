@@ -13,7 +13,7 @@ Download the files by downloading the repository off github and navigate to the 
 ## How to Build Image with Dockerfile 
 The docker-compose.yml file already contains all the commands needed to build your images. To do so type in the following code:
 ```
-[isp02]$ docker-compose -p kchrisi build
+[isp02]$ docker-compose -p kchristi build
 ```
 Check it has been made by using docker images
 ```
