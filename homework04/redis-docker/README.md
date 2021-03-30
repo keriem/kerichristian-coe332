@@ -3,12 +3,12 @@
 app.py is the python file which continues the routes to access data about the moreau animals. The Dockerfile has instructions when creating the docker image and container. The data_file.json is the data file with 100 moreau animals but is not used in this assignment. The requirements.txt file tells the docker which version of Flask is needed. The docker-compose.yml file contains instructions when building both containers. The redis.conf is a configuration file for the redis container. 
 ---
 ## Downloading Files
-Download the files by downloading the folder of github
+Download the files by downloading the repository off github and navigate to the correct folder
 ```
-git clone https://github.com/keriem/kerichristian-coe332 --no-checkout homework04
-cd homework04
-git sparse-checkout init --cone # to fetch only root files
-git sparse-checkout set homework04/redis-docker
+[isp02]$ git clone https://github.com/keriem/kerichristian-coe332
+[isp02]$ cd kerichristian-coe332
+[isp02]$ cd homework04
+[isp02]$ cd redis-docker
 ```
 ## How to Build Image with Dockerfile 
 The docker-compose.yml file already contains all the commands needed to build your images. To do so type in the following code:
