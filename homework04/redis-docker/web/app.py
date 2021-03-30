@@ -176,11 +176,17 @@ def delete_dates():
     enddate = datetime.datetime.strptime(end, "'%Y-%m-%d_%H:%M:%S.%f'")
     test = getdata()
     removals = []
-    removals.append([x for x in test if (x['created_on']!= 'None' and (datetime.datetime.strptime( x['created_on'],'%Y-%m-%d %H:%M:%S.%f') >= startdate and datetime.datetime.strptime( x['created_on'], '%Y-%m-%d %H:%M:%S.%f')<= enddate )) ])   
+    removals =[x for x in test if (x['created_on']!= 'None' and (datetime.datetime.strptime( x['created_on'],'%Y-%m-%d %H:%M:%S.%f') >= startdate and datetime.datetime.strptime( x['created_on'], '%Y-%m-%d %H:%M:%S.%f')<= enddate )) ]   
     rd = redis.StrictRedis(host = 'kchristi_redis_1',port=6379,db=0)
     for i in range(0,len(removals)):
-        index = test.index(removals[0][i])
-        rd.delete(index)
+        indexes = test.index(removals[i])
+        rd.delete(indexes)
+        #rd.hdel('head',indexes)
+        #rd.hdel('body',indexes)
+        #rd.hdel('arms',indexes)
+        #rd.hdel('legs',indexes)
+        #rd.hdel('tails',indexes)
+        #rd.hdel('created_on',indexes)
 
     return json.dumps(removals)
 
