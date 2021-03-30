@@ -5,8 +5,8 @@ app.py is the python file which continues the routes to access data about the mo
 ## Downloading Files
 Download the files by downloading the folder of github
 ```
-git clone https://github.com/keriem --no-checkout kerichristian-coe332
-cd kerichristian-coe332
+git clone https://github.com/keriem/kerichristian-coe332 --no-checkout homework04
+cd homework04
 git sparse-checkout init --cone # to fetch only root files
 git sparse-checkout set homework04/redis-docker
 ```
