@@ -1,6 +1,6 @@
 # Homework 4 Midterm
 ---
-app.py is the python file which continues the routes to access data about the moreau animals. The Dockerfile has instructions when creating the docker image and container. The data_file.json is the data file with 100 moreau animals which the container will access through flask. The consumer_requestor.py file is a consumer which accesses and consumes data from another student's url. The requirements.txt file tells the docker which version of Flask is needed. 
+app.py is the python file which continues the routes to access data about the moreau animals. The Dockerfile has instructions when creating the docker image and container. The data_file.json is the data file with 100 moreau animals but is not used in this assignment. The requirements.txt file tells the docker which version of Flask is needed. The docker-compose.yml file contains instructions when building both containers. The redis.conf is a configuration file for the redis container. 
 ---
 ## Downloading Files
 Download the files by getting the files off of github
@@ -12,27 +12,64 @@ Download the files by getting the files off of github
 [isp02]$ wget https://raw.githubusercontent.com/keriem/kerichristian-coe332/main/homework03/requirements.txt
 ```
 ## How to Build Image with Dockerfile 
-The docker file already contains all the commands needed to build your image. To do so type in the following code:
+The docker-compose.yml file already contains all the commands needed to build your images. To do so type in the following code:
 ```
-[isp02]$ docker build -t kchristian/homework03:1.0 .
+[isp02]$ docker-compose -p kchrisi build
 ```
 Check it has been made by using docker images
 ```
-[isp02]$ docker images
+[isp02]$ docker ps -a
 ```
 ## How to the run the Container and use the urls
-Run the containr created by the image 
+Run the containers created by the images 
 ```
-[isp02]$ docker run --name "kchristian-hw3-flask" -d -p 5006:5000 kchristian1/homework03:1.0
+[isp02]$ docker-compose -p kchristi up
 ```
 Now you should be able to curl into the flask using the container that is running. Check it using the 
 ```
 [isp02]$ curl localhost:5006/helloworld
 ```
+First set up the redis data base with the reset url
+```
+[isp02]$ curl localhost:5006/reset
+```
 To access all animals use this route
 ```
 [isp02]$ curl localhost:5006/animals
 ```
+To query a range of dates use the url "localhost:5006/animals/dates?start='\<\%Y-\%M-\%D_\%H:\%M:\%S.\%f\>'end=?'\<\%Y-\%M-\%D_\%H:\%M:\%S.\%f\>'" Here are some examples:
+```
+[isp02]$ curl "localhost:5006/animals/dates?start='2021-03-30_04:22:08.394410'&end='2021-03-30_04:22:08.395919'"
+```
+It will return all animals within that date range. If there are not any animals within that date range it will return []
+
+To select a particular creature by its unique identifier use the url localhost:5006/animals/uid?value='\<uuid\>' Here is an example:
+```
+[isp02]$ curl localhost:5006/animals/uid?value='27952028-4f2e-4120-97c4-78f22539ac6a'
+```
+To edit a particular creature by passing the UUID and providing updated “stats” use the url "localhost:5006/animals/edit?uid='\<uuid\>'&head='\<name\>'&body='\<name\>'&arms='\<number\>'&legs='\<number\>'&tails='\<number\>'". Here is an example:
+```
+[isp02]$ curl "localhost:5006/animals/edit?uid='27952028-4f2e-4120-97c4-78f22539ac6a'&head='bunny'&body='dog-cat'&arms='2'&legs='4'&tails='6'"
+```
+It will return the updated animal
+
+To delete a selection of animals by a date rangees use the url "localhost:5006/animals/delete/dates?start='\<\%Y-\%M-\%D_\%H:\%M:\%S.\%f\>'end=?'\<\%Y-\%M-\%D_\%H:\%M:\%S.\%f\>'" Here is an example:
+```
+[isp02]$  curl "localhost:5006/animals/delete/dates?start='2021-03-30_04:22:08.394410'&end='2021-03-30_04:22:08.395919'"
+```
+It will return the deleted animals
+
+To get the average number of legs per animal use the url localhost:5006/animals/averagelegs. 
+```
+[isp02]$ curl localhost:5006/animals/averagelegs
+```
+To get the total number of animals use the url localhost:5006/animals/total
+```
+[isp02]$ curl localhost:5006/animals/total
+```
+
+Below are other routes left over from Homework03:
+
 To access animals with a specific head use the url localhost:5006/animals/head?name= '\<nameofhead\>'. Here are some examples.
 ```
 # This will return all of the animals with a snake head
@@ -60,11 +97,5 @@ To create a random animal use the url localhost:5006/animals/createRandom
 The consumer file will run some test urls listed above. After the container is running call the container with the following line:
 ```
 [isp02]$ python3 consumer_requests.py
-```
-## Conclusion
-I wasn't sure how to do the consumer for someone elses code. I tried to coordinate with Zoe Watson, but thought it'd be safer to just include urls from my code. Hopefully this is sufficient as you said we would partner up for consumers on Thursday. 
-Make sure to stop the container!
-```
-[isp02]$ docker stop "kchristian-hw3-flask"
 ```
 
