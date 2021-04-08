@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-hw5-1
+  labels:
+    greeting: personalized
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hello-hw5-1
+  template:
+    metadata:
+      labels:
+        app: hello-hw5-1
+    spec:
+      containers:
+        - name: hellos-hw5
+          image: ubuntu:18.04
+          env:
+            - name: "NAME"
+              value: "Keri"
+            - name: "POD_IP"
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+          command: ['sh', '-c', 'echo "Hello, $NAME from IP $POD_IP!" && sleep 3600']
