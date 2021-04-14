@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kchristi-test-redis-deployment
+  labels:
+    app: kchristi-test-redis
+    username: kchristi
+    env: test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kchristi-test-redis
+  template:
+    metadata:
+      labels:
+        app: kchristi-test-redis
+        username: kchristi
+        env: test
+    spec:
+      containers:
+        - name: hellos
+          image: redis:5.0.0
+          volumeMounts:
+          - name: kchristi-test-redis-pvc-data 
+            mountPath: "/data"
+      volumes:
+      - name: kchristi-test-redis-pvc-data
+        persistentVolumeClaim:
+          claimName: kchristi-test-redis-pvc-data

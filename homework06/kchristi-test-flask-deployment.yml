@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kchristi-test-flask-deployment
+  labels:
+    app: kchristi-test-flask
+    username: kchristi
+    env: test
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: kchristi-test-flask
+  template:
+    metadata:
+      labels:
+        app: kchristi-test-flask
+        username: kchristi
+        env: test
+    spec:
+      containers:
+        - name: kchristi-flask-hw6
+          imagePullPolicy: Always
+          image: kchristian1/animals 
+          env:
+          - name: FLASK_APP_HW6
+            value: "app.py"
+          - name: REDIS_IP
+            valueFrom:
+              fieldRef:
+                fieldPath: status.podIP
+          ports:
+          - name: http
+            containerPort: 5000
+      
