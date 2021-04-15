@@ -26,9 +26,7 @@ spec:
           - name: FLASK_APP_HW6
             value: "app.py"
           - name: REDIS_IP
-            valueFrom:
-              fieldRef:
-                fieldPath: status.podIP
+            value: "10.244.13.174"
           ports:
           - name: http
             containerPort: 5000
